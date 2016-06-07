@@ -289,10 +289,12 @@ def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
 def add_point( matrix, x, y, z=0 ):
     matrix.append( [x, y, z, 1] )
 
-
-def draw_line( screen, x0, y0, x1, y1, color ):
+#TODO
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
     dx = x1 - x0
     dy = y1 - y0
+    #dz = z1 - z0
     if dx + dy < 0:
         dx = 0 - dx
         dy = 0 - dy
