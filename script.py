@@ -131,15 +131,23 @@ def second_pass( commands, num_frames ):
             endFrame = command[3]
             startValue = command[4]
             endValue = command[5]
+            numerator = float(endValue) - startValue
+            try:
+                degree = command[6]
+            except:
+                degree = 1
 
             if (startFrame < 0) or (endFrame >= num_frames) or (endFrame < startFrame):
                 print 'Invalid vary command for knob: ' + knob
                 exit()
             
             if startValue < endValue:
-                step = (float(endValue) - startValue) / (float(endFrame - startFrame))
+                #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
+                step = 1.0/(float(endFrame - startFrame))
+                
             else:
-                step = (float(endValue) - startValue) / (float(endFrame - startFrame))
+                #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
+                step = 1.0/(float(endFrame - startFrame))
 
             for f in range( num_frames ):
 
@@ -153,9 +161,9 @@ def second_pass( commands, num_frames ):
 
                 else:
                     if startValue < endValue:
-                        value = (f - startFrame) * step + startValue
+                        value = (((f - startFrame) * step) ** degree) * numerator) + startValue
                     else:
-                        value = (startFrame - f) * step
+                        value = math.abs((((endFrame - f) * step) ** degree) * numerator) + startValue
                 
                 frame[knob] = value
     return frames
