@@ -53,7 +53,14 @@ import mdl
 from display import *
 from matrix import *
 from draw import *
+from sys import maxint
 
+zbuffer = []
+for y in range(YRES):
+    row = []
+    zbuffer.append(row)
+    for x in range(XRES):
+        zbuffer[y].append(0.0 - maxint - 1)
 
 """======== first_pass( commands, symbols ) ==========
 

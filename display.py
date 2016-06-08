@@ -20,17 +20,20 @@ def new_screen( width = XRES, height = YRES ):
             screen[y].append( DEFAULT_COLOR[:] )
     return screen
 
-def plot( screen, color, x, y ):
+def plot( screen, color, x, y, z ):
+    global zbuffer
     x = int(x)
     y = int(y)
     newy = YRES - 1 - y
-    if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES ):
+    if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES and z > zbuffer[x][newy]):
         screen[x][newy] = color[:]
 
 def clear_screen( screen ):
+    global zbuffer
     for y in range( len(screen) ):
         for x in range( len(screen[y]) ):
             screen[x][y] = DEFAULT_COLOR[:]
+            zbuffer[x][y] = (0.0 - maxint - 1)
 
 def save_ppm( screen, fname ):
     f = open( fname, 'w' )
