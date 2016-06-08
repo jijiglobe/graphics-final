@@ -53,9 +53,8 @@ import mdl
 from display import *
 from matrix import *
 from draw import *
-from sys import maxint
 
-zbuffer = []
+
 for y in range(YRES):
     row = []
     zbuffer.append(row)
@@ -168,9 +167,9 @@ def second_pass( commands, num_frames ):
 
                 else:
                     if startValue < endValue:
-                        value = (((f - startFrame) * step) ** degree) * numerator) + startValue
+                        value = ((((f - startFrame) * step) ** degree) * numerator) + startValue
                     else:
-                        value = math.abs((((endFrame - f) * step) ** degree) * numerator) + startValue
+                        value = abs((((endFrame - f) * step) ** degree) * numerator) + startValue
                 
                 frame[knob] = value
     return frames
@@ -199,7 +198,7 @@ def run(filename):
 
         stack = [ tmp ]
         screen = new_screen()    
-        
+        clear_screen( screen )
         for command in commands:
             if command[0] == "pop":
                 stack.pop()
@@ -307,4 +306,3 @@ def run(filename):
             fname = 'anim/%s%03d.png' % (name, f)
             print 'Drawing frame: ' + fname
             save_extension(screen, fname)
-            

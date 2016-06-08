@@ -1,6 +1,6 @@
 from subprocess import Popen, PIPE
 from os import remove
-
+from sys import maxint
 #constants
 XRES = 500
 YRES = 500
@@ -8,7 +8,7 @@ MAX_COLOR = 255
 RED = 0
 GREEN = 1
 BLUE = 2
-
+zbuffer = []
 DEFAULT_COLOR = [0, 0, 0]
 
 def new_screen( width = XRES, height = YRES ):
@@ -27,6 +27,8 @@ def plot( screen, color, x, y, z ):
     newy = YRES - 1 - y
     if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES and z > zbuffer[x][newy]):
         screen[x][newy] = color[:]
+        zbuffer[x][newy] = z
+        print str(z)
 
 def clear_screen( screen ):
     global zbuffer

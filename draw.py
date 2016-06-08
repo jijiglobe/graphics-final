@@ -21,11 +21,11 @@ def draw_polygons( points, screen, color ):
 
         if calculate_dot( points, p ) < 0:
             draw_line( screen, points[p][0], points[p][1],
-                       points[p+1][0], points[p+1][1], color )
+                       points[p+1][0], points[p+1][1], points[p][2], color )
             draw_line( screen, points[p+1][0], points[p+1][1],
-                       points[p+2][0], points[p+2][1], color )
+                       points[p+2][0], points[p+2][1], points[p+1][2], color )
             draw_line( screen, points[p+2][0], points[p+2][1],
-                       points[p][0], points[p][1], color )
+                       points[p][0], points[p][1], points[p][2], color )
         p+= 3
 
 
@@ -279,22 +279,20 @@ def draw_lines( matrix, screen, color ):
     p = 0
     while p < len( matrix ) - 1:
         draw_line( screen, matrix[p][0], matrix[p][1],
-                   matrix[p+1][0], matrix[p+1][1], color )
+                   matrix[p+1][0], matrix[p+1][1], matrix[p][2], color )
         p+= 2
 
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
     add_point( matrix, x0, y0, z0 )
     add_point( matrix, x1, y1, z1 )
 
-def add_point( matrix, x, y, z=0 ):
+def add_point( matrix, x, y, z ):
     matrix.append( [x, y, z, 1] )
 
-#TODO
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
+
+def draw_line( screen, x0, y0, x1, y1, z, color ):
     dx = x1 - x0
     dy = y1 - y0
-    #dz = z1 - z0
     if dx + dy < 0:
         dx = 0 - dx
         dy = 0 - dy
@@ -308,19 +306,19 @@ def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
     if dx == 0:
         y = y0
         while y <= y1:
-            plot(screen, color,  x0, y)
+            plot(screen, color,  x0, y, z)
             y = y + 1
     elif dy == 0:
         x = x0
         while x <= x1:
-            plot(screen, color, x, y0)
+            plot(screen, color, x, y0, z)
             x = x + 1
     elif dy < 0:
         d = 0
         x = x0
         y = y0
         while x <= x1:
-            plot(screen, color, x, y)
+            plot(screen, color, x, y, z)
             if d > 0:
                 y = y - 1
                 d = d - dx
@@ -331,7 +329,7 @@ def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
         x = x0
         y = y0
         while y <= y1:
-            plot(screen, color, x, y)
+            plot(screen, color, x, y, z)
             if d > 0:
                 x = x - 1
                 d = d - dy
@@ -342,7 +340,7 @@ def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
         x = x0
         y = y0
         while x <= x1:
-            plot(screen, color, x, y)
+            plot(screen, color, x, y, z)
             if d > 0:
                 y = y + 1
                 d = d - dx
@@ -353,7 +351,7 @@ def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
         x = x0
         y = y0
         while y <= y1:
-            plot(screen, color, x, y)
+            plot(screen, color, x, y, z)
             if d > 0:
                 x = x + 1
                 d = d - dy
