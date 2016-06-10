@@ -27,9 +27,51 @@ def draw_polygons( points, screen, color ):
             draw_line( screen, points[p+2][0], points[p+2][1], points[p+2][2],
                        points[p][0], points[p][1], points[p][2], color )
         p+= 3
-
-
-
+        
+    #scanline
+    p = 0
+    while p < len( points ) - 2:
+        if points[p][1] == max(points[p][1],points[p+1][1],points[p+2][1]):
+            top = points[p]
+            if points[p+1][1] > points[p+2][1]:
+                mid = points[p+1]
+                bot = points[p+2]
+            else:
+                 mid = points[p+2]
+                 bot = points[p+1]
+        elif points[p+1][1] == max(points[p][1],points[p+1][1],points[p+2][1]):
+            top = points[p+1]
+            if points[p][1] > points[p+2][1]:
+                mid = points[p]
+                bot = points[p+2]
+            else:
+                mid = points[p+2]
+                bot = points[p]
+        else:
+            top = points[p+2]
+            if points[p][1] > points[p+1][1]:
+                mid = points[p]
+                bot = points[p+1]
+            else:
+                mid = points[p+1]
+                bot = points[p]
+        y = bot[1]
+        dx = top[0] - bot[0]
+        dx0= mid[0]-bot[0]
+        dx1= top[0]-mid[0]
+        dz = top[2] - bot[2]
+        dz0 = mid[2] - bot[2]
+        dz1 = top[2] - mid[2]
+        while y < top[1]:
+            m = ((y - bot[1])/(top[1]-bot[1]))
+            if y <= mid[1]:
+                draw_line(screen, bot[0]+dx*m,y,bot[2]+dz*m,
+                          bot[0]+dx0*m,y , bot[2]+dz0*m,color)
+            else:
+                draw_line(screen, bot[0]+dx*m,y,bot[2]+dz*m,
+                          bot[0]+dx1*m,y,bot[2]+dz1*m,color)
+            y+=1
+        p+=3
 def add_box( points, x, y, z, width, height, depth ):
     x1 = x + width
     y1 = y - height
@@ -303,7 +345,8 @@ def draw_line( screen, x0, y0, z0, x1, y1, z1, color ):
         tmp = y0
         y0 = y1
         y1 = tmp
-    
+    if dx == 0 and dy == 0:
+        return
     if dx == 0:
         y = y0
         while y <= y1:
