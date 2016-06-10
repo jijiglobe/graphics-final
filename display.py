@@ -28,7 +28,7 @@ def plot( screen, color, x, y, z ):
     if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES and z > zbuffer[x][newy]):
         screen[x][newy] = color[:]
         zbuffer[x][newy] = z
-        #print str(z)
+        #print str(zbuffer[x][newy])
 
 def clear_screen( screen ):
     global zbuffer
