@@ -5,12 +5,34 @@ from math import cos, sin, pi
 
 MAX_STEPS = 100
 
+def scanline_conversion( screen, top, mid, bot, zbuffer, color):
+    c = 0
+    while bot[1] + c < top[1]:
+        dx0 = (0.0 + top[0] - bot[0])/(top[1] - bot[1])
+        dz0 = (0.0 + top[2] - bot[2])/(top[1] - bot[1])
+        if bot[1] + c < mid[1]:
+            dx1 = (0.0 + mid[0] - bot[0]) / (mid[1] - bot[1])
+            dz1 = (0.0 + mid[2] - bot[2])/ (mid[1] - bot[1])
+            draw_line(screen,
+                      bot[0] + c*dx0, bot[1] + c, bot[2] + c * dz0,
+                      bot[0] + c*dx1, bot[1] + c, bot[2] + c * dz1,
+                      zbuffer, color)
+        else:
+            dx1 = (0.0 + top[0] - mid[0]) / (top[1] - mid[1])
+            dz1 = (0.0 + top[2] - mid[2]) / (top[1] - mid[1])
+            draw_line(screen,
+                      bot[0] + c*dx0, bot[1] + c, bot[2] + c * dz0,
+                      mid[0] + (c + bot[1] - mid[1])*dx1, bot[1] + c,
+                      mid[2] + (c + bot[1] - mid[1]) * dz1,
+                      zbuffer, color)
+        c = c + 1
+
 def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point( points, x0, y0, z0 )
     add_point( points, x1, y1, z1 )
     add_point( points, x2, y2, z2 )
     
-def draw_polygons( points, screen, color ):
+def draw_polygons( points, screen, zbuffer, color ):
 
     if len(points) < 3:
         print 'Need at least 3 points to draw a polygon!'
@@ -18,14 +40,31 @@ def draw_polygons( points, screen, color ):
 
     p = 0
     while p < len( points ) - 2:
-
         if calculate_dot( points, p ) < 0:
-            draw_line( screen, points[p][0], points[p][1],
-                       points[p+1][0], points[p+1][1], color )
-            draw_line( screen, points[p+1][0], points[p+1][1],
-                       points[p+2][0], points[p+2][1], color )
-            draw_line( screen, points[p+2][0], points[p+2][1],
-                       points[p][0], points[p][1], color )
+            #set top,mid,bot as proper coordinates
+            top = []
+            bot = []
+            for i in range(3):
+                if points[p+i][1]==max(points[p][1],
+                                       points[p+1][1],
+                                       points[p+2][1]) and top==[]:
+                    top = points[p+i]
+                elif points[p+i][1]==min(points[p][1],
+                                         points[p+1][1],
+                                         points[p+2][1]) and bot==[]:
+                    bot = points[p+i]
+                else:
+                    mid = points[p+i]
+            scanline_conversion( screen, top, mid, bot, zbuffer, color )
+            draw_line( screen, points[p][0], points[p][1], points[p][2],
+                       points[p+1][0], points[p+1][1], points[p+1][2],
+                       zbuffer, color )
+            draw_line( screen, points[p+1][0], points[p+1][1], points[p+1][2],
+                       points[p+2][0], points[p+2][1], points[p+2][2],
+                       zbuffer, color )
+            draw_line( screen, points[p+2][0], points[p+2][1], points[p+2][2],
+                       points[p][0], points[p][1], points[p][2],
+                       zbuffer, color )
         p+= 3
 
 
@@ -272,14 +311,15 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
         y0 = y
         t+= step
 
-def draw_lines( matrix, screen, color ):
+def draw_lines( matrix, screen, zbuffer, color ):
     if len( matrix ) < 2:
         print "Need at least 2 points to draw a line"
         
     p = 0
     while p < len( matrix ) - 1:
-        draw_line( screen, matrix[p][0], matrix[p][1],
-                   matrix[p+1][0], matrix[p+1][1], color )
+        draw_line( screen, matrix[p][0], matrix[p][1], matrix[p][2],
+                   matrix[p+1][0], matrix[p+1][1], matrix[p+1][2],
+                   zbuffer, color )
         p+= 2
 
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
@@ -290,9 +330,12 @@ def add_point( matrix, x, y, z=0 ):
     matrix.append( [x, y, z, 1] )
 
 
-def draw_line( screen, x0, y0, x1, y1, color ):
+def draw_line( screen, x0, y0, z0, x1, y1, z1, zbuffer, color ):
     dx = x1 - x0
     dy = y1 - y0
+    dz = 0
+    if dx!=0 or dy!=0:
+        dz = (z1 - z0) / (dx * dx + dy * dy) ** (0.5)
     if dx + dy < 0:
         dx = 0 - dx
         dy = 0 - dy
@@ -302,59 +345,69 @@ def draw_line( screen, x0, y0, x1, y1, color ):
         tmp = y0
         y0 = y1
         y1 = tmp
-    
+        dz = 0 - dz
+        z0,z1 = z1,z0
+    if dx!=0 and dy!=0:
+        dz = (z1-z0)/max(dx,dy)
+    z = z0
     if dx == 0:
         y = y0
         while y <= y1:
-            plot(screen, color,  x0, y)
+            plot(screen, color, zbuffer, x0, y, z)
             y = y + 1
+            z = z + dz
     elif dy == 0:
         x = x0
         while x <= x1:
-            plot(screen, color, x, y0)
+            plot(screen, color, zbuffer, x, y0, z)
             x = x + 1
+            z = z + dz
     elif dy < 0:
         d = 0
         x = x0
         y = y0
         while x <= x1:
-            plot(screen, color, x, y)
+            plot(screen, color, zbuffer, x, y, z)
             if d > 0:
                 y = y - 1
                 d = d - dx
             x = x + 1
+            z = z + dz
             d = d - dy
     elif dx < 0:
         d = 0
         x = x0
         y = y0
         while y <= y1:
-            plot(screen, color, x, y)
+            plot(screen, color, zbuffer, x, y, z)
             if d > 0:
                 x = x - 1
                 d = d - dy
             y = y + 1
+            z = z + dz
             d = d - dx
     elif dx > dy:
         d = 0
         x = x0
         y = y0
         while x <= x1:
-            plot(screen, color, x, y)
+            plot(screen, color, zbuffer, x, y, z)
             if d > 0:
                 y = y + 1
                 d = d - dx
             x = x + 1
+            z = z + dz
             d = d + dy
     else:
         d = 0
         x = x0
         y = y0
         while y <= y1:
-            plot(screen, color, x, y)
+            plot(screen, color, zbuffer, x, y, z)
             if d > 0:
                 x = x + 1
                 d = d - dy
             y = y + 1
+            z = z + dz
             d = d + dx
 

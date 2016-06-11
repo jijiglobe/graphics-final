@@ -8,7 +8,6 @@ MAX_COLOR = 255
 RED = 0
 GREEN = 1
 BLUE = 2
-zbuffer = []
 DEFAULT_COLOR = [0, 0, 0]
 
 def new_screen( width = XRES, height = YRES ):
@@ -20,19 +19,22 @@ def new_screen( width = XRES, height = YRES ):
             screen[y].append( DEFAULT_COLOR[:] )
     return screen
 
-def plot( screen, color, x, y ):
+def plot( screen, color, zbuffer, x, y, z ):
     x = int(x)
     y = int(y)
     newy = YRES - 1 - y
-    if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES ):
+    #print str(x) + ", " + str(y) + ", " + str(z)
+    if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES
+         and z > zbuffer[x][newy] ):
         screen[x][newy] = color[:]
         zbuffer[x][newy] = z
         #print str(zbuffer[x][newy])
 
-def clear_screen( screen ):
+def clear_screen( screen, zbuffer ):
     for y in range( len(screen) ):
         for x in range( len(screen[y]) ):
             screen[x][y] = DEFAULT_COLOR[:]
+            zbuffer[x][y] = 0.0 - maxint - 1
 
 def save_ppm( screen, fname ):
     f = open( fname, 'w' )

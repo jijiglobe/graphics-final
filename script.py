@@ -57,12 +57,6 @@ from sys import maxint
 import math
 
 
-for y in range(YRES):
-    row = []
-    zbuffer.append(row)
-    for x in range(XRES):
-        zbuffer[y].append(0.0 - maxint - 1)
-
 """======== first_pass( commands, symbols ) ==========
 
   Checks the commands array for any animation commands
@@ -142,7 +136,7 @@ def second_pass( commands, num_frames ):
             startValue = command[4]
             endValue = command[5]
             numerator = float(endValue) - startValue
-            print "jus' tryna make it work"
+            #print "jus' tryna make it work"
             try:
                 degree = command[6]
             except:
@@ -152,7 +146,7 @@ def second_pass( commands, num_frames ):
                 print 'Invalid vary command for knob: ' + knob
                 print "\n\n"
                 exit()
-            print "step making\n"
+            #print "step making\n"
             forwards = startValue < endValue
             if startValue < endValue:
                 #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
@@ -162,8 +156,8 @@ def second_pass( commands, num_frames ):
                 #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
                 step = 1.0/(float(endFrame - startFrame))
                 
-            print "fuckin frame loop bitch"
-            print "numerator: "+str(numerator)
+            #print "fuckin frame loop bitch"
+            #print "numerator: "+str(numerator)
             for f in range( num_frames ):
                 frame = frames[f]
                 
@@ -204,8 +198,9 @@ def run(filename):
     for f in range( num_frames ):
 
         stack = [ tmp ]
-        screen = new_screen()    
-        clear_screen( screen )
+        screen = new_screen()
+        zbuffer = new_screen()
+        clear_screen( screen, zbuffer )
         for command in commands:
             if command[0] == "pop":
                 stack.pop()
@@ -225,43 +220,43 @@ def run(filename):
                 m = []
                 add_sphere(m, command[1], command[2], command[3], command[4], 5)
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, color )
+                draw_polygons( m, screen, zbuffer, color )
 
             if command[0] == "torus":
                 m = []
                 add_torus(m, command[1], command[2], command[3], command[4], command[5], 5)
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, color )
+                draw_polygons( m, screen, zbuffer, color )
 
             if command[0] == "box":                
                 m = []
                 add_box(m, *command[1:])
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, color )
+                draw_polygons( m, screen, zbuffer, color )
 
             if command[0] == "line":
                 m = []
                 add_edge(m, *command[1:])
                 matrix_mult(stack[-1], m)
-                draw_lines( m, screen, color )
+                draw_lines( m, screen, zbuffer, color )
 
             if command[0] == "bezier":
                 m = []
                 add_curve(m, command[1], command[2], command[3], command[4], command[5], command[6], command[7], command[8], .05, 'bezier')
                 matrix_mult(stack[-1], m)
-                draw_lines( m, screen, color )
+                draw_lines( m, screen, zbuffer, color )
 
             if command[0] == "hermite":
                 m = []
                 add_curve(m, command[1], command[2], command[3], command[4], command[5], command[6], command[7], command[8], .05, 'hermite')
                 matrix_mult(stack[-1], m)
-                draw_lines( m, screen, color )
+                draw_lines( m, screen, zbuffer, color )
 
             if command[0] == "circle":
                 m = []
                 add_circle(m, command[1], command[2], command[3], command[4], .05)
                 matrix_mult(stack[-1], m)
-                draw_lines( m, screen, color )
+                draw_lines( m, screen, zbuffer, color )
 
             if command[0] == "move":                
                 xval = command[1]
