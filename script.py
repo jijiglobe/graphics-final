@@ -56,7 +56,7 @@ from draw import *
 from sys import maxint
 import math
 
-zbuffer = []
+
 for y in range(YRES):
     row = []
     zbuffer.append(row)
@@ -205,7 +205,7 @@ def run(filename):
 
         stack = [ tmp ]
         screen = new_screen()    
-        
+        clear_screen( screen )
         for command in commands:
             if command[0] == "pop":
                 stack.pop()
@@ -314,4 +314,3 @@ def run(filename):
             fname = 'anim/%s%03d.png' % (name, f)
             print 'Drawing frame: ' + fname
             save_extension(screen, fname)
-            
