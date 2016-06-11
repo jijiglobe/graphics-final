@@ -145,7 +145,8 @@ def p_statement_basename(p):
     commands.append(p[1:])
 
 def p_statement_vary(p):
-    """statement : VARY SYMBOL INT INT NUMBER NUMBER"""
+    """statement : VARY SYMBOL INT INT NUMBER NUMBER
+                 | VARY SYMBOL INT INT NUMBER NUMBER NUMBER"""
     commands.append(p[1:])
     symbols.append(('knob', p[2]))
 

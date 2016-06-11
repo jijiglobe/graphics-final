@@ -54,6 +54,7 @@ from display import *
 from matrix import *
 from draw import *
 from sys import maxint
+import math
 
 zbuffer = []
 for y in range(YRES):
@@ -126,28 +127,33 @@ def first_pass( commands ):
   appropirate value. 
   ===================="""
 def second_pass( commands, num_frames ):
-
     frames = []
     for i in range( num_frames ):
         frames.append( {} )
-        
+
+    print commands
     for command in commands:
+        print command[0]
         if command[0] == 'vary':
+            print "vary"
             knob = command[1]
             startFrame = command[2]
             endFrame = command[3]
             startValue = command[4]
             endValue = command[5]
             numerator = float(endValue) - startValue
+            print "jus' tryna make it work"
             try:
                 degree = command[6]
             except:
                 degree = 1
-
+            
             if (startFrame < 0) or (endFrame >= num_frames) or (endFrame < startFrame):
                 print 'Invalid vary command for knob: ' + knob
+                print "\n\n"
                 exit()
-            
+            print "step making\n"
+            forwards = startValue < endValue
             if startValue < endValue:
                 #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
                 step = 1.0/(float(endFrame - startFrame))
@@ -155,23 +161,23 @@ def second_pass( commands, num_frames ):
             else:
                 #step = (float(endValue) - startValue) / (float(endFrame - startFrame))
                 step = 1.0/(float(endFrame - startFrame))
-
+                
+            print "fuckin frame loop bitch"
+            print "numerator: "+str(numerator)
             for f in range( num_frames ):
-
                 frame = frames[f]
                 
-                if f < startFrame:
+                if f < startFrame:#(f < startFrame and not forwards) or (f < startFrame - 1 and forwards):
                     value = startValue
 
-                elif f > endFrame:
+                elif f > endFrame:#(f > endFrame and forwards) or ( f > endFrame + 1 and not forwards):
                     value = endValue
 
                 else:
                     if startValue < endValue:
-                        value = (((f - startFrame) * step) ** degree) * numerator) + startValue
+                        value = (( math.fabs(((f - startFrame) * step)) ** degree) * numerator) + startValue
                     else:
-                        value = math.abs((((endFrame - f) * step) ** degree) * numerator) + startValue
-                
+                        value = math.fabs((((endFrame - f) * step) ** degree) * numerator) + endValue
                 frame[knob] = value
     return frames
 
@@ -263,6 +269,7 @@ def run(filename):
                 zval = command[3]
 
                 if command[4]:
+                    print knobs[f]
                     knob = knobs[f][command[4]]
                     xval*= knob
                     yval*= knob
