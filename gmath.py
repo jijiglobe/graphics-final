@@ -49,6 +49,21 @@ def calculate_flat( points, i, source):
     dot = normal[0] * vx + normal[1] * vy + normal[2] * vz
     divisor = specularMag * normalMag
     
-    diffuse = (dot / divisor) / 2
+    diffuse = dot / divisor
     
-    return dot / divisor
+    #normalize normal
+    normal[0] = normal[0]/normalMag
+    normal[1] = normal[1]/normalMag
+    normal[2] = normal[2]/normalMag
+    nmag = (normal[0] ** 2 + normal[1] ** 2 + normal[2]) ** .5
+
+    ndot = normal[0] * vx + normal[1] * vy + normal[2] * vz
+
+    reflection = [vx - 2 * ndot * normal[0],
+                  vy - 2 * ndot * normal[1],
+                  vz - 2 * ndot * normal[2]]
+
+    specdot = reflection[0] * 0 + reflection[1] * 0 + reflection[2] * -1
+    divisor = normalMag * specularMag
+    specular = specdot / divisor
+    return (diffuse + specular) / 2

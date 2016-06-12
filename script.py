@@ -222,8 +222,8 @@ def run(filename):
                 matrix_mult(stack[-1], m)
                 draw_polygons( m, screen, zbuffer, color,
                                specular_point = [0,0,0],
-                               specular_value = 100,
-                               ambient = 100)
+                               specular_value = 200,
+                               ambient = 50)
 
             if command[0] == "torus":
                 m = []
