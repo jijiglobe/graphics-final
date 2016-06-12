@@ -1,6 +1,6 @@
 from display import *
 from matrix import *
-from gmath import calculate_dot, calculate_flat
+from gmath import calculate_dot, calculate_flat, perspective_induce
 from math import cos, sin, pi
 
 MAX_STEPS = 100
@@ -68,8 +68,9 @@ def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point( points, x0, y0, z0 )
     add_point( points, x1, y1, z1 )
     add_point( points, x2, y2, z2 )
-    
+
 def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
+    print "DRAWING POLYGONS"
     if "specular_point" in optional_parameters and "specular_value" in optional_parameters:
         specular_point = optional_parameters["specular_point"]
         specular_value = optional_parameters["specular_value"]
@@ -78,18 +79,25 @@ def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
         specular_point = [0,0,0]
         specular_value = 200
         specular = True
+       
+    if specular_point == None:
+        specular_point = [0,0,0]
+
     if "ambient" in optional_parameters:
         ambient_value = optional_parameters["ambient"]
         ambient = True
     else:
-        ambient_value = 50
+        ambient_value = 10
         ambient = True
+    print specular_point
+
     if len(points) < 3:
         print 'Need at least 3 points to draw a polygon!'
         return
     black = [0,0,0]
     p = 0
     while p < len( points ) - 2:
+        perspective_induce(points, p)
         if calculate_dot( points, p ) < 0:
             shade = color
             if ambient:
@@ -99,11 +107,12 @@ def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
 
             if specular:
                 specular = calculate_flat(points, p, specular_point)
+                #print specular
                 if specular > 0:
                     shade[0] += int(specular * specular_value)
                     shade[1] += int(specular * specular_value)
                     shade[2] += int(specular * specular_value)
-                    print shade
+                    #print shade
                 
             #set top,mid,bot as proper coordinates
             top = []

@@ -48,7 +48,7 @@
   ========================="""
 
 
-
+import globalVars
 import mdl
 from display import *
 from matrix import *
@@ -129,7 +129,6 @@ def second_pass( commands, num_frames ):
     for command in commands:
         print command[0]
         if command[0] == 'vary':
-            print "vary"
             knob = command[1]
             startFrame = command[2]
             endFrame = command[3]
@@ -144,7 +143,6 @@ def second_pass( commands, num_frames ):
             
             if (startFrame < 0) or (endFrame >= num_frames) or (endFrame < startFrame):
                 print 'Invalid vary command for knob: ' + knob
-                print "\n\n"
                 exit()
             #print "step making\n"
             forwards = startValue < endValue
@@ -193,8 +191,9 @@ def run(filename):
 
     (name, num_frames) = first_pass( commands )
     knobs = second_pass( commands, num_frames )
-
-        
+    shading = False
+    specular_point = [0,0,0]
+    specular_value = 200
     for f in range( num_frames ):
 
         stack = [ tmp ]
@@ -216,27 +215,56 @@ def run(filename):
             if command[0] == "display":
                 display(screen)
 
+            if command[0] == "shading":
+                xval = command[1]
+                yval = command[2]
+                zval = command[3]
+                if len(command) > 4:
+                    knob = knobs[f][command[4]]
+                    xval *= knob
+                    yval *= knob
+                    zval *= knob
+                specular_point = [xval,yval,zval]
+                shading = True
+
             if command[0] == "sphere":
                 m = []
                 add_sphere(m, command[1], command[2], command[3], command[4], 5)
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, zbuffer, color)
-                """,
-                               specular_point = [0,0,0],
-                               specular_value = 200,
-                               ambient = 50)"""
+                if shading:
+                    draw_polygons( m, screen, zbuffer, color,
+                                   specular_point = specular_point,
+                                   specular_value = specular_value,
+                                   ambient = 20)
+                else:
+                    draw_polygons( m, screen, zbuffer, color)
+                
 
             if command[0] == "torus":
                 m = []
                 add_torus(m, command[1], command[2], command[3], command[4], command[5], 5)
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, zbuffer, color )
-
+                if shading:
+                    draw_polygons( m, screen, zbuffer, color,
+                                   specular_point = specular_point,
+                                   specular_value = specular_value,
+                                   ambient = 20)
+                else:
+                    draw_polygons( m, screen, zbuffer, color )
+                    
             if command[0] == "box":                
                 m = []
                 add_box(m, *command[1:])
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, zbuffer, color )
+                if shading:
+                    draw_polygons( m, screen, zbuffer, color,
+                                   specular_point = specular_point,
+                                   specular_value = specular_value,
+                                   ambient = 20)
+                else:
+                    draw_polygons( m, screen, zbuffer, color )
+                    
+                    #draw_polygons( m, screen, zbuffer, color )
 
             if command[0] == "line":
                 m = []

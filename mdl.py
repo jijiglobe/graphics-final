@@ -127,6 +127,11 @@ lex.lex()
 commands = []
 symbols = []
 
+def p_statement_shade(p):
+    """statement : SHADING INT INT INT
+                 | SHADING INT INT INT SYMBOL"""
+    commands.append(p[1:])
+
 def p_stuff(p):
     """stuff : 
             | statement stuff"""

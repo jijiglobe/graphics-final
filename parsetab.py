@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '\xafO\x96\xe4V\xe1Q=\xfc-\x0e[\xce\t\xb2\xe5'
+_lr_signature = '+\xbf\xa6\xfa\xe4*\xe5;\xfe\xcdS\xd0A\xa3\xdeq'
     
-_lr_action_items = {'BOX':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[1,-15,-3,-8,1,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SCALE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[2,-15,-3,-8,2,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'BASENAME':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[3,-15,-3,-8,3,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'MOVE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[4,-15,-3,-8,4,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'VARY':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[5,-15,-3,-8,5,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'FRAMES':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[6,-15,-3,-8,6,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'LINE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[7,-15,-3,-8,7,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'DISPLAY':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[8,-15,-3,-8,8,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'COMMENT':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[9,-15,-3,-8,9,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SET':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[10,-15,-3,-8,10,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'HERMITE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[11,-15,-3,-8,11,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'POP':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[12,-15,-3,-8,12,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'PUSH':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[15,-15,-3,-8,15,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SCREEN':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[16,-15,-3,-8,16,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'$end':([0,8,9,12,14,15,16,21,23,24,25,28,29,30,31,32,35,37,40,41,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[-1,-15,-3,-8,-1,-9,-11,0,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-2,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'STRING':([3,8,23,],[28,28,28,]),'TORUS':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[17,-15,-3,-8,17,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SPHERE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[18,-15,-3,-8,18,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'ID':([3,5,8,10,23,24,25,59,63,64,],[32,32,32,32,32,-40,-41,32,32,32,]),'ROTATE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[19,-15,-3,-8,19,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'INT':([1,2,4,6,7,11,13,16,17,18,20,22,24,25,26,27,31,32,33,34,36,38,39,42,43,44,45,46,47,49,50,51,52,53,55,57,58,60,61,62,65,66,67,68,69,71,72,73,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,94,95,97,98,99,101,102,103,104,106,107,108,109,110,111,112,113,],[25,25,25,35,25,25,25,42,25,25,25,25,-40,-41,25,25,-36,-37,25,52,25,25,25,56,25,25,25,25,25,25,25,25,65,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,88,25,25,25,25,25,25,95,96,25,25,25,100,25,25,25,25,105,25,25,25,25,25,25,25,25,114,115,]),'DOUBLE':([1,2,4,7,11,13,17,18,20,22,24,25,26,27,31,32,33,36,38,39,43,44,45,46,47,49,50,51,53,55,57,58,60,61,62,65,66,67,68,69,71,72,73,76,77,78,79,81,82,83,84,85,86,89,90,94,97,98,99,101,103,104,106,107,108,109,110,111,],[24,24,24,24,24,24,24,24,24,24,-40,-41,24,24,-36,-37,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,]),'XYZ':([3,5,8,10,19,23,24,25,59,63,64,],[31,31,31,31,45,31,-40,-41,31,31,31,]),'BEZIER':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[20,-15,-3,-8,20,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SET_KNOBS':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[13,-15,-3,-8,13,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'CIRCLE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[22,-15,-3,-8,22,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),'SAVE':([0,8,9,12,14,15,16,23,24,25,28,29,30,31,32,35,37,40,48,54,56,59,63,64,70,74,75,80,84,87,91,92,93,96,100,102,105,112,113,114,115,],[23,-15,-3,-8,23,-9,-11,-12,-40,-41,-39,-5,-38,-36,-37,-4,-14,-17,-13,-16,-10,-35,-33,-31,-34,-32,-30,-19,-6,-21,-22,-7,-23,-18,-20,-24,-25,-29,-27,-28,-26,]),}
+_lr_action_items = {'BOX':([0,],[1,]),'SCALE':([0,],[2,]),'BASENAME':([0,],[8,]),'MOVE':([0,],[3,]),'VARY':([0,],[4,]),'FRAMES':([0,],[5,]),'LINE':([0,],[6,]),'DISPLAY':([0,],[7,]),'COMMENT':([0,],[9,]),'SET':([0,],[10,]),'HERMITE':([0,],[11,]),'POP':([0,],[12,]),'PUSH':([0,],[14,]),'SHADING':([0,],[15,]),'SCREEN':([0,],[16,]),'$end':([7,9,12,13,14,16,23,24,25,30,31,32,34,35,36,37,46,48,54,57,60,64,65,69,72,76,77,81,83,87,90,94,95,96,99,103,105,108,115,116,117,118,],[-17,-5,-10,0,-11,-13,-14,-42,-43,-39,-38,-6,-41,-16,-40,-7,-19,-15,-18,-12,-37,-35,-33,-1,-36,-34,-32,-2,-21,-8,-23,-24,-9,-25,-20,-22,-26,-27,-31,-29,-30,-28,]),'STRING':([7,8,23,],[34,34,34,]),'TORUS':([0,],[17,]),'SPHERE':([0,],[18,]),'ID':([4,7,8,10,23,24,25,60,64,65,69,],[30,30,30,30,30,-42,-43,30,30,30,30,]),'ROTATE':([0,],[19,]),'INT':([1,2,3,5,6,11,15,16,17,18,20,21,22,24,25,26,27,28,29,30,31,33,38,39,40,41,42,43,44,45,47,49,50,51,52,53,55,56,58,59,61,62,63,66,67,68,70,71,73,74,75,78,79,80,82,83,84,85,86,87,88,89,90,91,92,93,97,98,100,101,102,104,105,106,107,109,110,111,112,113,114,115,116,],[25,25,25,32,25,25,40,41,25,25,25,25,25,-42,-43,25,25,25,52,-39,-38,25,25,25,56,57,25,25,25,25,25,25,25,25,66,25,25,69,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,91,25,25,25,25,25,25,98,99,25,25,25,103,25,25,25,25,108,25,25,25,25,25,25,25,25,117,118,]),'DOUBLE':([1,2,3,6,11,17,18,20,21,22,24,25,26,27,28,30,31,33,38,39,42,43,44,45,47,49,50,51,53,55,58,59,61,62,63,66,67,68,70,71,73,74,75,78,79,80,82,84,85,86,87,88,89,92,93,97,100,101,102,104,106,107,109,110,111,112,113,114,],[24,24,24,24,24,24,24,24,24,24,-42,-43,24,24,24,-39,-38,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,]),'XYZ':([4,7,8,10,19,23,24,25,60,64,65,69,],[31,31,31,31,44,31,-42,-43,31,31,31,31,]),'BEZIER':([0,],[20,]),'SET_KNOBS':([0,],[21,]),'CIRCLE':([0,],[22,]),'SAVE':([0,],[23,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'TEXT':([3,8,23,],[29,37,48,]),'SYMBOL':([3,5,8,10,23,59,63,64,],[30,34,30,38,30,70,74,75,]),'stuff':([0,14,],[21,41,]),'NUMBER':([1,2,4,7,11,13,17,18,20,22,26,27,33,36,38,39,43,44,45,46,47,49,50,51,53,55,57,58,60,61,62,65,66,67,68,69,71,72,73,76,77,78,79,81,82,83,84,85,86,89,90,94,97,98,99,101,103,104,106,107,108,109,110,111,],[26,27,33,36,39,40,43,44,46,47,49,50,51,53,54,55,57,58,59,60,61,62,63,64,66,67,68,69,71,72,73,76,77,78,79,80,81,82,83,84,85,86,87,89,90,91,92,93,94,97,98,99,101,102,103,104,106,107,108,109,110,111,112,113,]),'statement':([0,14,],[14,14,]),}
+_lr_goto_items = {'TEXT':([7,8,23,],[35,37,48,]),'SYMBOL':([4,7,8,10,23,60,64,65,69,],[29,36,36,38,36,72,76,77,81,]),'NUMBER':([1,2,3,6,11,17,18,20,21,22,26,27,28,33,38,39,42,43,44,45,47,49,50,51,53,55,58,59,61,62,63,66,67,68,70,71,73,74,75,78,79,80,82,84,85,86,87,88,89,92,93,97,100,101,102,104,106,107,109,110,111,112,113,114,],[26,27,28,33,39,42,43,45,46,47,49,50,51,53,54,55,58,59,60,61,62,63,64,65,67,68,70,71,73,74,75,78,79,80,82,83,84,85,86,87,88,89,90,92,93,94,95,96,97,100,101,102,104,105,106,107,109,110,111,112,113,114,115,116,]),'statement':([0,],[13,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -25,46 +25,48 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> stuff","S'",1,None,None,None),
-  ('stuff -> <empty>','stuff',0,'p_stuff','/home/jijiglobe/graphics-final/mdl.py',131),
-  ('stuff -> statement stuff','stuff',2,'p_stuff','/home/jijiglobe/graphics-final/mdl.py',132),
-  ('statement -> COMMENT','statement',1,'p_statement_comment','/home/jijiglobe/graphics-final/mdl.py',136),
-  ('statement -> FRAMES INT','statement',2,'p_statement_frames','/home/jijiglobe/graphics-final/mdl.py',140),
-  ('statement -> BASENAME TEXT','statement',2,'p_statement_basename','/home/jijiglobe/graphics-final/mdl.py',144),
-  ('statement -> VARY SYMBOL INT INT NUMBER NUMBER','statement',6,'p_statement_vary','/home/jijiglobe/graphics-final/mdl.py',148),
-  ('statement -> VARY SYMBOL INT INT NUMBER NUMBER NUMBER','statement',7,'p_statement_vary','/home/jijiglobe/graphics-final/mdl.py',149),
-  ('statement -> POP','statement',1,'p_statement_stack','/home/jijiglobe/graphics-final/mdl.py',154),
-  ('statement -> PUSH','statement',1,'p_statement_stack','/home/jijiglobe/graphics-final/mdl.py',155),
-  ('statement -> SCREEN INT INT','statement',3,'p_statement_screen','/home/jijiglobe/graphics-final/mdl.py',159),
-  ('statement -> SCREEN','statement',1,'p_statement_screen','/home/jijiglobe/graphics-final/mdl.py',160),
-  ('statement -> SAVE','statement',1,'p_statement_save','/home/jijiglobe/graphics-final/mdl.py',167),
-  ('statement -> SAVE TEXT','statement',2,'p_statement_save','/home/jijiglobe/graphics-final/mdl.py',168),
-  ('statement -> DISPLAY TEXT','statement',2,'p_statement_show','/home/jijiglobe/graphics-final/mdl.py',175),
-  ('statement -> DISPLAY','statement',1,'p_statement_show','/home/jijiglobe/graphics-final/mdl.py',176),
-  ('statement -> SET SYMBOL NUMBER','statement',3,'p_statement_knobs','/home/jijiglobe/graphics-final/mdl.py',180),
-  ('statement -> SET_KNOBS NUMBER','statement',2,'p_statement_knobs','/home/jijiglobe/graphics-final/mdl.py',181),
-  ('statement -> SPHERE NUMBER NUMBER NUMBER NUMBER INT INT','statement',7,'p_statement_sphere','/home/jijiglobe/graphics-final/mdl.py',187),
-  ('statement -> SPHERE NUMBER NUMBER NUMBER NUMBER','statement',5,'p_statement_sphere','/home/jijiglobe/graphics-final/mdl.py',188),
-  ('statement -> TORUS NUMBER NUMBER NUMBER NUMBER NUMBER INT INT','statement',8,'p_statement_torus','/home/jijiglobe/graphics-final/mdl.py',195),
-  ('statement -> TORUS NUMBER NUMBER NUMBER NUMBER NUMBER','statement',6,'p_statement_torus','/home/jijiglobe/graphics-final/mdl.py',196),
-  ('statement -> BOX NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',7,'p_statement_box','/home/jijiglobe/graphics-final/mdl.py',203),
-  ('statement -> LINE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',7,'p_statement_line','/home/jijiglobe/graphics-final/mdl.py',207),
-  ('statement -> CIRCLE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',8,'p_statement_circle','/home/jijiglobe/graphics-final/mdl.py',211),
-  ('statement -> CIRCLE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',9,'p_statement_circle','/home/jijiglobe/graphics-final/mdl.py',212),
-  ('statement -> BEZIER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',14,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',222),
-  ('statement -> BEZIER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',13,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',223),
-  ('statement -> HERMITE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',14,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',224),
-  ('statement -> HERMITE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',13,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',225),
-  ('statement -> MOVE NUMBER NUMBER NUMBER SYMBOL','statement',5,'p_statement_move','/home/jijiglobe/graphics-final/mdl.py',232),
-  ('statement -> MOVE NUMBER NUMBER NUMBER','statement',4,'p_statement_move','/home/jijiglobe/graphics-final/mdl.py',233),
-  ('statement -> SCALE NUMBER NUMBER NUMBER SYMBOL','statement',5,'p_statement_scale','/home/jijiglobe/graphics-final/mdl.py',241),
-  ('statement -> SCALE NUMBER NUMBER NUMBER','statement',4,'p_statement_scale','/home/jijiglobe/graphics-final/mdl.py',242),
-  ('statement -> ROTATE XYZ NUMBER SYMBOL','statement',4,'p_statement_rotate','/home/jijiglobe/graphics-final/mdl.py',250),
-  ('statement -> ROTATE XYZ NUMBER','statement',3,'p_statement_rotate','/home/jijiglobe/graphics-final/mdl.py',251),
-  ('SYMBOL -> XYZ','SYMBOL',1,'p_SYMBOL','/home/jijiglobe/graphics-final/mdl.py',259),
-  ('SYMBOL -> ID','SYMBOL',1,'p_SYMBOL','/home/jijiglobe/graphics-final/mdl.py',260),
-  ('TEXT -> SYMBOL','TEXT',1,'p_TEXT','/home/jijiglobe/graphics-final/mdl.py',264),
-  ('TEXT -> STRING','TEXT',1,'p_TEXT','/home/jijiglobe/graphics-final/mdl.py',265),
-  ('NUMBER -> DOUBLE','NUMBER',1,'p_NUMBER','/home/jijiglobe/graphics-final/mdl.py',269),
-  ('NUMBER -> INT','NUMBER',1,'p_NUMBER','/home/jijiglobe/graphics-final/mdl.py',270),
+  ("S' -> statement","S'",1,None,None,None),
+  ('statement -> SHADING INT INT INT','statement',4,'p_statement_shade','/home/jijiglobe/graphics-final/mdl.py',131),
+  ('statement -> SHADING INT INT INT SYMBOL','statement',5,'p_statement_shade','/home/jijiglobe/graphics-final/mdl.py',132),
+  ('stuff -> <empty>','stuff',0,'p_stuff','/home/jijiglobe/graphics-final/mdl.py',136),
+  ('stuff -> statement stuff','stuff',2,'p_stuff','/home/jijiglobe/graphics-final/mdl.py',137),
+  ('statement -> COMMENT','statement',1,'p_statement_comment','/home/jijiglobe/graphics-final/mdl.py',141),
+  ('statement -> FRAMES INT','statement',2,'p_statement_frames','/home/jijiglobe/graphics-final/mdl.py',145),
+  ('statement -> BASENAME TEXT','statement',2,'p_statement_basename','/home/jijiglobe/graphics-final/mdl.py',149),
+  ('statement -> VARY SYMBOL INT INT NUMBER NUMBER','statement',6,'p_statement_vary','/home/jijiglobe/graphics-final/mdl.py',153),
+  ('statement -> VARY SYMBOL INT INT NUMBER NUMBER NUMBER','statement',7,'p_statement_vary','/home/jijiglobe/graphics-final/mdl.py',154),
+  ('statement -> POP','statement',1,'p_statement_stack','/home/jijiglobe/graphics-final/mdl.py',159),
+  ('statement -> PUSH','statement',1,'p_statement_stack','/home/jijiglobe/graphics-final/mdl.py',160),
+  ('statement -> SCREEN INT INT','statement',3,'p_statement_screen','/home/jijiglobe/graphics-final/mdl.py',164),
+  ('statement -> SCREEN','statement',1,'p_statement_screen','/home/jijiglobe/graphics-final/mdl.py',165),
+  ('statement -> SAVE','statement',1,'p_statement_save','/home/jijiglobe/graphics-final/mdl.py',172),
+  ('statement -> SAVE TEXT','statement',2,'p_statement_save','/home/jijiglobe/graphics-final/mdl.py',173),
+  ('statement -> DISPLAY TEXT','statement',2,'p_statement_show','/home/jijiglobe/graphics-final/mdl.py',180),
+  ('statement -> DISPLAY','statement',1,'p_statement_show','/home/jijiglobe/graphics-final/mdl.py',181),
+  ('statement -> SET SYMBOL NUMBER','statement',3,'p_statement_knobs','/home/jijiglobe/graphics-final/mdl.py',185),
+  ('statement -> SET_KNOBS NUMBER','statement',2,'p_statement_knobs','/home/jijiglobe/graphics-final/mdl.py',186),
+  ('statement -> SPHERE NUMBER NUMBER NUMBER NUMBER INT INT','statement',7,'p_statement_sphere','/home/jijiglobe/graphics-final/mdl.py',192),
+  ('statement -> SPHERE NUMBER NUMBER NUMBER NUMBER','statement',5,'p_statement_sphere','/home/jijiglobe/graphics-final/mdl.py',193),
+  ('statement -> TORUS NUMBER NUMBER NUMBER NUMBER NUMBER INT INT','statement',8,'p_statement_torus','/home/jijiglobe/graphics-final/mdl.py',200),
+  ('statement -> TORUS NUMBER NUMBER NUMBER NUMBER NUMBER','statement',6,'p_statement_torus','/home/jijiglobe/graphics-final/mdl.py',201),
+  ('statement -> BOX NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',7,'p_statement_box','/home/jijiglobe/graphics-final/mdl.py',208),
+  ('statement -> LINE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',7,'p_statement_line','/home/jijiglobe/graphics-final/mdl.py',212),
+  ('statement -> CIRCLE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',8,'p_statement_circle','/home/jijiglobe/graphics-final/mdl.py',216),
+  ('statement -> CIRCLE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',9,'p_statement_circle','/home/jijiglobe/graphics-final/mdl.py',217),
+  ('statement -> BEZIER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',14,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',227),
+  ('statement -> BEZIER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',13,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',228),
+  ('statement -> HERMITE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER INT','statement',14,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',229),
+  ('statement -> HERMITE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER','statement',13,'p_statement_curve','/home/jijiglobe/graphics-final/mdl.py',230),
+  ('statement -> MOVE NUMBER NUMBER NUMBER SYMBOL','statement',5,'p_statement_move','/home/jijiglobe/graphics-final/mdl.py',237),
+  ('statement -> MOVE NUMBER NUMBER NUMBER','statement',4,'p_statement_move','/home/jijiglobe/graphics-final/mdl.py',238),
+  ('statement -> SCALE NUMBER NUMBER NUMBER SYMBOL','statement',5,'p_statement_scale','/home/jijiglobe/graphics-final/mdl.py',246),
+  ('statement -> SCALE NUMBER NUMBER NUMBER','statement',4,'p_statement_scale','/home/jijiglobe/graphics-final/mdl.py',247),
+  ('statement -> ROTATE XYZ NUMBER SYMBOL','statement',4,'p_statement_rotate','/home/jijiglobe/graphics-final/mdl.py',255),
+  ('statement -> ROTATE XYZ NUMBER','statement',3,'p_statement_rotate','/home/jijiglobe/graphics-final/mdl.py',256),
+  ('SYMBOL -> XYZ','SYMBOL',1,'p_SYMBOL','/home/jijiglobe/graphics-final/mdl.py',264),
+  ('SYMBOL -> ID','SYMBOL',1,'p_SYMBOL','/home/jijiglobe/graphics-final/mdl.py',265),
+  ('TEXT -> SYMBOL','TEXT',1,'p_TEXT','/home/jijiglobe/graphics-final/mdl.py',269),
+  ('TEXT -> STRING','TEXT',1,'p_TEXT','/home/jijiglobe/graphics-final/mdl.py',270),
+  ('NUMBER -> DOUBLE','NUMBER',1,'p_NUMBER','/home/jijiglobe/graphics-final/mdl.py',274),
+  ('NUMBER -> INT','NUMBER',1,'p_NUMBER','/home/jijiglobe/graphics-final/mdl.py',275),
 ]

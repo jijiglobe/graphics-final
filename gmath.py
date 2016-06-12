@@ -57,6 +57,13 @@ def calculate_flat( points, i, source):
     normal[2] = normal[2]/normalMag
     nmag = (normal[0] ** 2 + normal[1] ** 2 + normal[2]) ** .5
 
+    #normalize specular vector
+    vx = vx/specularMag
+    vy = vy/specularMag
+    vz = vz/specularMag
+    specularMag = (vx ** 2 + vy ** 2 + vz ** 2) ** .5
+
+
     ndot = normal[0] * vx + normal[1] * vy + normal[2] * vz
 
     reflection = [vx - 2 * ndot * normal[0],
@@ -64,11 +71,38 @@ def calculate_flat( points, i, source):
                   vz - 2 * ndot * normal[2]]
 
     specdot = reflection[0] * 0 + reflection[1] * 0 + reflection[2] * -1
-    divisor = normalMag * specularMag
+    divisor = normalMag * specularMag * 4
     specular = specdot / divisor
+    """if specular > 1:
+        specular = 1
+    """
     """if specular < 0:
         specular = 0
     if diffuse < 0:
         diffuse = 0
     print diffuse + specular"""
-    return (diffuse + specular) / 2
+    ans = (diffuse + specular) / 2
+    if ans < 1:
+        return ans
+    else:
+        return 1
+
+def perspective_induce(points, p):
+    #this doesn't work
+    pass
+"""    for x in range(3):
+        #translate to the origin
+        print "original: "+str(points[p+x])
+        points[p+x][0] -= 250
+        points[p+x][1] -= 250
+        #induce perspective
+        points[p+x][0] /= points[p+x][2] *.01
+        points[p+x][1] /= points[p+x][2] *.01
+        #translate back
+        points[p+x][0] += 250
+        points[p+x][1] += 250
+        #convert to int
+        points[p+x][0] = int(points[p+x][0])
+        points[p+x][1] = int(points[p+x][1])
+        print "new:    : "+str(points[p+x])
+"""
