@@ -70,18 +70,20 @@ def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point( points, x2, y2, z2 )
     
 def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
-    specular = False
-    ambient = False
-    print optional_parameters
-    print specular
     if "specular_point" in optional_parameters and "specular_value" in optional_parameters:
         specular_point = optional_parameters["specular_point"]
         specular_value = optional_parameters["specular_value"]
         specular = True
+    else:
+        specular_point = [0,0,0]
+        specular_value = 200
+        specular = True
     if "ambient" in optional_parameters:
         ambient_value = optional_parameters["ambient"]
         ambient = True
-
+    else:
+        ambient_value = 50
+        ambient = True
     if len(points) < 3:
         print 'Need at least 3 points to draw a polygon!'
         return
@@ -96,12 +98,11 @@ def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
                 shade[2] = ambient_value
 
             if specular:
-                diffuse = calculate_flat(points, p, specular_point)
-                print diffuse
-                if diffuse > 0:
-                    shade[0] += int(diffuse * specular_value)
-                    shade[1] += int(diffuse * specular_value)
-                    shade[2] += int(diffuse * specular_value)
+                specular = calculate_flat(points, p, specular_point)
+                if specular > 0:
+                    shade[0] += int(specular * specular_value)
+                    shade[1] += int(specular * specular_value)
+                    shade[2] += int(specular * specular_value)
                     print shade
                 
             #set top,mid,bot as proper coordinates

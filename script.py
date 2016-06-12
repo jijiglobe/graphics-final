@@ -220,10 +220,11 @@ def run(filename):
                 m = []
                 add_sphere(m, command[1], command[2], command[3], command[4], 5)
                 matrix_mult(stack[-1], m)
-                draw_polygons( m, screen, zbuffer, color,
+                draw_polygons( m, screen, zbuffer, color)
+                """,
                                specular_point = [0,0,0],
                                specular_value = 200,
-                               ambient = 50)
+                               ambient = 50)"""
 
             if command[0] == "torus":
                 m = []

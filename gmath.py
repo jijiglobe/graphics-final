@@ -66,4 +66,9 @@ def calculate_flat( points, i, source):
     specdot = reflection[0] * 0 + reflection[1] * 0 + reflection[2] * -1
     divisor = normalMag * specularMag
     specular = specdot / divisor
+    """if specular < 0:
+        specular = 0
+    if diffuse < 0:
+        diffuse = 0
+    print diffuse + specular"""
     return (diffuse + specular) / 2
