@@ -51,4 +51,6 @@ def calculate_flat( points, i, source):
     
     diffuse = (dot / divisor) / 2
     
-    return dot / divisor
+    
+    
+    return 

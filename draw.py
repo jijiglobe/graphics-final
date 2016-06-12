@@ -1,6 +1,6 @@
 from display import *
 from matrix import *
-from gmath import calculate_dot
+from gmath import calculate_dot, calculate_flat
 from math import cos, sin, pi
 
 MAX_STEPS = 100
@@ -69,7 +69,18 @@ def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point( points, x1, y1, z1 )
     add_point( points, x2, y2, z2 )
     
-def draw_polygons( points, screen, zbuffer, color ):
+def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
+    specular = False
+    ambient = False
+    print optional_parameters
+    print specular
+    if "specular_point" in optional_parameters and "specular_value" in optional_parameters:
+        specular_point = optional_parameters["specular_point"]
+        specular_value = optional_parameters["specular_value"]
+        specular = True
+    if "ambient" in optional_parameters:
+        ambient_value = optional_parameters["ambient"]
+        ambient = True
 
     if len(points) < 3:
         print 'Need at least 3 points to draw a polygon!'
@@ -78,6 +89,21 @@ def draw_polygons( points, screen, zbuffer, color ):
     p = 0
     while p < len( points ) - 2:
         if calculate_dot( points, p ) < 0:
+            shade = color
+            if ambient:
+                shade[0] = ambient_value
+                shade[1] = ambient_value
+                shade[2] = ambient_value
+
+            if specular:
+                diffuse = calculate_flat(points, p, specular_point)
+                print diffuse
+                if diffuse > 0:
+                    shade[0] += int(diffuse * specular_value)
+                    shade[1] += int(diffuse * specular_value)
+                    shade[2] += int(diffuse * specular_value)
+                    print shade
+                
             #set top,mid,bot as proper coordinates
             top = []
             bot = []
@@ -92,7 +118,7 @@ def draw_polygons( points, screen, zbuffer, color ):
                     bot = points[p+i]
                 else:
                     mid = points[p+i]
-            scanline_conversion( screen, top, mid, bot, zbuffer, color )
+            scanline_conversion( screen, top, mid, bot, zbuffer, shade )
 
             right = []
             left = []
@@ -108,7 +134,7 @@ def draw_polygons( points, screen, zbuffer, color ):
                     left = points[p+i]
                 else:
                     midx = points[p+i]
-            vertical_conversion( screen, right, midx, left, zbuffer, color)
+            vertical_conversion( screen, right, midx, left, zbuffer, shade)
 
             draw_line( screen, points[p][0], points[p][1], points[p][2],
                        points[p+1][0], points[p+1][1], points[p+1][2],
