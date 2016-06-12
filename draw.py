@@ -14,17 +14,54 @@ def scanline_conversion( screen, top, mid, bot, zbuffer, color):
             dx1 = (0.0 + mid[0] - bot[0]) / (mid[1] - bot[1])
             dz1 = (0.0 + mid[2] - bot[2])/ (mid[1] - bot[1])
             draw_line(screen,
-                      bot[0] + c*dx0, bot[1] + c, bot[2] + c * dz0,
-                      bot[0] + c*dx1, bot[1] + c, bot[2] + c * dz1,
+                      bot[0] + c*dx0,
+                      bot[1] + c,
+                      bot[2] + c * dz0,
+                      bot[0] + c*dx1,
+                      bot[1] + c,
+                      bot[2] + c * dz1,
                       zbuffer, color)
         else:
             dx1 = (0.0 + top[0] - mid[0]) / (top[1] - mid[1])
             dz1 = (0.0 + top[2] - mid[2]) / (top[1] - mid[1])
             draw_line(screen,
-                      bot[0] + c*dx0, bot[1] + c, bot[2] + c * dz0,
-                      mid[0] + (c + bot[1] - mid[1])*dx1, bot[1] + c,
+                      bot[0] + c*dx0,
+                      bot[1] + c,
+                      bot[2] + c * dz0,
+                      mid[0] + (c + bot[1] - mid[1])*dx1,
+                      bot[1] + c,
                       mid[2] + (c + bot[1] - mid[1]) * dz1,
                       zbuffer, color)
+        c = c + 1
+
+def vertical_conversion(screen, top, mid, bot, zbuffer, color):
+    c = 0
+    while bot[0] + c < top[0]:
+        dy0 = (0.0 + top[1] - bot[1])/(top[0] - bot[0])
+        dz0 = (0.0 + top[2] - bot[2])/(top[0] - bot[0])
+        if bot[0] + c < mid[0]:
+            dy1 = (0.0 + mid[1] - bot[1]) / (mid[0] - bot[0])
+            dz1 = (0.0 + mid[2] - bot[2])/ (mid[0] - bot[0])
+            draw_line(screen,
+                      bot[0] + c, #x0
+                      bot[1] + c*dy0, #y0
+                      bot[2] + c * dz0, #z0
+                      bot[0] + c, #x1
+                      bot[1] + c*dy1, #y1
+                      bot[2] + c * dz1, #z1
+                      zbuffer, color)
+        else:            
+            dy1 = (0.0 + top[1] - mid[1]) / (top[0] - mid[0])
+            dz1 = (0.0 + top[2] - mid[2]) / (top[0] - mid[0])
+            draw_line(screen,
+                      bot[0] + c, #x0
+                      bot[1] + c*dy0, #y0
+                      bot[2] + c*dz0, #z0
+                      bot[0] + c, #x1
+                      mid[1] + (c + bot[0] - mid[0])*dy1, #y1
+                      mid[2] + (c + bot[0] - mid[0]) * dz1, #z1
+                      zbuffer, color)
+                      
         c = c + 1
 
 def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
@@ -37,7 +74,7 @@ def draw_polygons( points, screen, zbuffer, color ):
     if len(points) < 3:
         print 'Need at least 3 points to draw a polygon!'
         return
-
+    black = [0,0,0]
     p = 0
     while p < len( points ) - 2:
         if calculate_dot( points, p ) < 0:
@@ -56,6 +93,23 @@ def draw_polygons( points, screen, zbuffer, color ):
                 else:
                     mid = points[p+i]
             scanline_conversion( screen, top, mid, bot, zbuffer, color )
+
+            right = []
+            left = []
+            midx = []
+            for i in range(3):
+                if points[p+i][0]==max(points[p][0],
+                                       points[p+1][0],
+                                       points[p+2][0]) and right==[]:
+                    right = points[p+i]
+                elif points[p+i][0]==min(points[p][0],
+                                         points[p+1][0],
+                                         points[p+2][0]) and left==[]:
+                    left = points[p+i]
+                else:
+                    midx = points[p+i]
+            vertical_conversion( screen, right, midx, left, zbuffer, color)
+
             draw_line( screen, points[p][0], points[p][1], points[p][2],
                        points[p+1][0], points[p+1][1], points[p+1][2],
                        zbuffer, color )

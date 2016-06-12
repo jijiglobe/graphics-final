@@ -264,7 +264,7 @@ def run(filename):
                 zval = command[3]
 
                 if command[4]:
-                    print knobs[f]
+                    #print knobs[f]
                     knob = knobs[f][command[4]]
                     xval*= knob
                     yval*= knob

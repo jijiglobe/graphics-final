@@ -1,0 +1,6 @@
+frames 5
+basename simple
+move 250 250 0
+rotate y 100 spin
+sphere 0 0 0 100
+vary spin 0 4 0 1
