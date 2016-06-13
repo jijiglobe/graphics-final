@@ -62,14 +62,16 @@ def calculate_flat( points, i, source):
     vy = vy/specularMag
     vz = vz/specularMag
     specularMag = (vx ** 2 + vy ** 2 + vz ** 2) ** .5
-
-
+    
+    #caltulate dot product between surface normal and specular vector
     ndot = normal[0] * vx + normal[1] * vy + normal[2] * vz
 
+    #calculate reflection vector
     reflection = [vx - 2 * ndot * normal[0],
                   vy - 2 * ndot * normal[1],
                   vz - 2 * ndot * normal[2]]
-
+    
+    #calculate dot product between reflection and view vector [0,0,1]
     specdot = reflection[0] * 0 + reflection[1] * 0 + reflection[2] * -1
     divisor = normalMag * specularMag * 4
     specular = specdot / divisor

@@ -125,9 +125,8 @@ def second_pass( commands, num_frames ):
     for i in range( num_frames ):
         frames.append( {} )
 
-    print commands
     for command in commands:
-        print command[0]
+
         if command[0] == 'vary':
             knob = command[1]
             startFrame = command[2]
@@ -191,6 +190,7 @@ def run(filename):
 
     (name, num_frames) = first_pass( commands )
     knobs = second_pass( commands, num_frames )
+    #establish if shading was changed from default
     shading = False
     specular_point = [0,0,0]
     specular_value = 200
@@ -219,6 +219,7 @@ def run(filename):
                 xval = command[1]
                 yval = command[2]
                 zval = command[3]
+
                 if len(command) > 4:
                     knob = knobs[f][command[4]]
                     xval *= knob

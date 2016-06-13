@@ -70,7 +70,6 @@ def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point( points, x2, y2, z2 )
 
 def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
-    print "DRAWING POLYGONS"
     if "specular_point" in optional_parameters and "specular_value" in optional_parameters:
         specular_point = optional_parameters["specular_point"]
         specular_value = optional_parameters["specular_value"]
@@ -128,8 +127,10 @@ def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
                     bot = points[p+i]
                 else:
                     mid = points[p+i]
+            #perform horizontal scanline conversion
             scanline_conversion( screen, top, mid, bot, zbuffer, shade )
 
+            #set left, mid, and right for vertical conversion
             right = []
             left = []
             midx = []
@@ -144,6 +145,7 @@ def draw_polygons( points, screen, zbuffer, color, **optional_parameters ):
                     left = points[p+i]
                 else:
                     midx = points[p+i]
+            #perform vertical scanline conversion
             vertical_conversion( screen, right, midx, left, zbuffer, shade)
 
             draw_line( screen, points[p][0], points[p][1], points[p][2],
